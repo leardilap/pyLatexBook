@@ -13,8 +13,8 @@ from PIL import Image
 from PIL.ExifTags import TAGS
 
 # Get all images (.JPG and .jpg in this example)
-files = glob.glob("/home/ardila/Documents/python_latex_book/scaled/*.JPG")
-files.extend(glob.glob("/home/ardila/Documents/python_latex_book/scaled/*.jpg"))
+files = glob.glob("/home/ardila/Documents/pyLatexBook/scaled/*.JPG")
+files.extend(glob.glob("/home/ardila/Documents/pyLatexBook/scaled/*.jpg"))
 
 # Returns value of specified exif field.
 def get_exif_value(exif, field) :
