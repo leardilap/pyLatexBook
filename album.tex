@@ -17,13 +17,17 @@
 % size calculator on their web site
 % http://www.blurb.co.uk/make/pdf_to_book/booksize_calculator
 
-\usepackage[paperwidth=8.125in, paperheight=10.25in, 
+
+% change paper size to 19 x 15 cm
+
+
+\usepackage[paperwidth=19cm, paperheight=15cm, 
 	    % amount we 'lose' (visually) due to the binding
             % left and right pages are offset a bit to the sides
             % (typically looks better for most kinds of bindings)
-            bindingoffset=0.25in,
+            bindingoffset=1cm,
             % set total to the dimensions of the printed part
-            total={7.125in,9.5in},
+            total={16cm,13.5cm},
             % include header/footer/margin notes in printed area
             twoside, includeall, nomarginpar,
             ignorehead=false, ignorefoot=false, ignoremp=false,
@@ -79,11 +83,15 @@
 \pagestyle{empty}
 
 % Interior front page
-\vspace*{3in}
+\vspace*{5cm}
 
 \begin{center}
 
-{\Huge Colombia 2017/2018}
+{\Huge Colombia}
+
+\vspace{\baselineskip}
+
+{\LARGE Dec 2017 - Jan 2018}
 
 \vspace{\baselineskip}
 

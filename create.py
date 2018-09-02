@@ -48,9 +48,10 @@ def get_latex(filepath):
 	print "{%"
 	print "\\setlength{\\fboxsep}{0pt}%"
 	print "\\setlength{\\fboxrule}{0pt}%"
-	print "\\fbox{\\includegraphics[height=95mm]{" + filepath + "}}%"
+	print "\\fbox{\\includegraphics[height=100mm]{" + filepath + "}}%"
 	print "}%"	
-	print '\\caption{' + '\\texttt{[' + get_filename(filepath) + ']}' + ' ' + do.strftime('%d') + ' ' + do.strftime('%B') + ' ' + do.strftime('%Y') + '}'
+	print '\\vspace{9 mm}\n'
+	print '\\caption{' + '\\texttt{' + get_filename(filepath).split('.')[0] + ' - }' + ' ' + do.strftime('%d') + ' ' + do.strftime('%B') + ' ' + do.strftime('%Y') + '}'
 	print '\\end{figure}\n'
 	return;
 
@@ -62,7 +63,7 @@ count = 0
 for filepath in files:
 	count = count + 1
 	get_latex(filepath)
-	if count % 2 == 0:
+	if count % 1 == 0:
 		print "\\newpage\n"
 	else:
 		print '\\vspace{8 mm}\n'
