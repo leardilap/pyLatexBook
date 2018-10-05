@@ -5,16 +5,19 @@
 # Run: python create.py > photos.tex
 # Date: January 2016
 # Author: Richard Hill http://retu.be
+# Modified by: Luis Ardila http://bozica.co
 
 import glob
 import os,sys
 from datetime import datetime
 from PIL import Image
 from PIL.ExifTags import TAGS
+import json
 
 # Get all images (.JPG and .jpg in this example)
-files = glob.glob("/home/luis/dev/pyLatexBook/scaled/*.JPG")
-files.extend(glob.glob("/home/luis/dev/pyLatexBook/scaled/*.jpg"))
+files = glob.glob(os.getcwd() + "/scaled/*.JPG")
+files.extend(glob.glob(os.getcwd() + "/scaled/*.jpg"))
+
 
 # Returns value of specified exif field.
 def get_exif_value(exif, field) :
@@ -51,12 +54,24 @@ def get_latex(filepath):
 	print "\\fbox{\\includegraphics[height=100mm]{" + filepath + "}}%"
 	print "}%"	
 	print '\\vspace{9 mm}\n'
-	print '\\caption{' + '\\texttt{' + get_filename(filepath).split('.')[0] + ' - }' + ' ' + do.strftime('%d') + ' ' + do.strftime('%B') + ' ' + do.strftime('%Y') + '}'
+	print '\\caption{' + '\\texttt{' + captions[get_filename(filepath).split('.')[0]] + ' - }' + ' ' + do.strftime('%d') + ' ' + do.strftime('%B') + ' ' + do.strftime('%Y') + '}'
 	print '\\end{figure}\n'
 	return;
 
 # Sort the images chronologically
 files = sorted(files, key=get_comparator)
+
+# Get captions
+try:
+    captions = json.load(open(os.getcwd() + "/scaled/captions.json"))
+except: 
+    captions = {}
+    count = 1
+    for filepath in files:
+	    captions[get_filename(filepath).split('.')[0]] = str(count)
+	    count = count + 1
+
+    json.dump(captions, open(os.getcwd() + "/scaled/captions.json", 'w'), indent=4)
 
 # Loop over images and print latex for each
 count = 0

@@ -13,7 +13,7 @@
 # a sub-directory scaled/
 
 source=$(pwd)/photos
-
+mkdir -p scaled
 #for file in $source*.jpg $source**/*.jpg $source*.JPG $source**/*.JPG # CAPS
 #do
 for file in $source/*.jpg $source/*.JPG

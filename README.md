@@ -8,8 +8,8 @@
 ## How to use
 
 ```
-mkdir scaled
-bash scale.sh 
+mkdir photos            # put here all desired photos
+bash scale.sh
 python create.py > photos.tex
 pdflatex album.tex
 
