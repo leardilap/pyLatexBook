@@ -68,7 +68,7 @@ except:
     captions = {}
     count = 1
     for filepath in files:
-	    captions[get_filename(filepath).split('.')[0]] = str(count)
+	    captions[get_filename(filepath).split('.')[0]] = "sample caption "+ str(count)
 	    count = count + 1
 
     json.dump(captions, open(os.getcwd() + "/scaled/captions.json", 'w'), indent=4)
